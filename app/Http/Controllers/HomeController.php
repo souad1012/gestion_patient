@@ -17,9 +17,10 @@ class HomeController extends Controller
         $consultationsCount = Consultation::count();
         $fileAttentesCount = FileAttente::where('statut', 'en_attente')->count();
 
-        $salles = Salle::withCount(['fileAttentes as patients_en_attente' => function ($query) {
-            $query->where('statut', 'en_attente');
-        }])->get();
+        $salles = Salle::all();
+        #withCount(['fileAttentes as patients_en_attente' => function ($query) {
+        #    $query->where('statut', 'en_attente');
+        #}])->get();
 
         return view('home', compact(
             'patientsCount',

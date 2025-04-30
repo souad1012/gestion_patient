@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rendez_vous_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('rendez_vous_id')->nullable()->constrained('rendez_vous')->onDelete('set null');
             $table->foreignId('salle_id')->constrained()->onDelete('cascade');
             $table->dateTime('heure_debut');
             $table->dateTime('heure_fin')->nullable();
